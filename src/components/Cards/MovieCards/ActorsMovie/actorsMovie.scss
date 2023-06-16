@@ -1,0 +1,21 @@
+@use '../../../../scss/' as *;
+
+.actors {
+    display: flex;
+    justify-content: center;
+    &__title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    &__slide {
+    padding: 0;
+    margin: 0;
+    border-radius: 30px;
+
+    @include mobile {
+        width: 100%;
+        padding: 0 3px;
+        }
+    }
+}

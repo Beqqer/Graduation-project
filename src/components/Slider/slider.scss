@@ -1,0 +1,16 @@
+@use '../../scss/' as *;
+
+.slide {
+    margin: 80px 0 0 0;
+    &:hover {
+        box-shadow: 0px 0px 7px 8px #f6060af1;
+            transform: scale(0.9);
+            transition: 0.5s;
+            // z-index: 99;
+    }
+
+    @include mobile {
+        width: 250%;
+        margin: 120px auto;
+    }
+}

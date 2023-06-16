@@ -1,0 +1,47 @@
+.sign-up-form {
+	list-style-type: none;
+	flex-grow: 1;
+	margin: 130px auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+	width: 100%;
+	max-width: 39rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	border: 1px solid #dadada;
+	border-radius: 20px;
+	padding: 2rem 3rem;
+}
+
+.button-submit {
+	width: 100%;
+}
+
+.sign-up-form-text {
+	font-size: 1rem;
+	text-align: center;
+	color: #8d8e97;
+}
+
+.form-text-link {
+	text-decoration: none;
+	color: #2231aa;
+	padding-left: 0.5rem;
+	outline: 0;
+}
+
+.form-text-link:hover,
+.form-text-link:focus {
+	color: #5360cd;
+}
+
+@media (max-width: 768px) {
+	.registration {
+		max-width: 100%;
+	}
+	.sign-up-form {
+		padding: 1.5rem;
+	}
+}
