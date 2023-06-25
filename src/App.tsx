@@ -11,21 +11,26 @@ import SignInForm from './components/SignIn/SignInForm';
 import SignUpForm from './components/SignUp/SignUpForm';
 import { SignUpActivation } from './components/SignUpActivate/SignUpActivate';
 import SelectedMovie from './components/Cards/SelectedMovie/SelectedMovie';
+import { useSelector } from 'react-redux';
+import { IStoreState } from './Types';
 
 function App() {
+
+  const authorizedUser = useSelector((state: IStoreState) => state.user.authorizedUser);
+
   return (
     <BrowserRouter>
       <Header/>
       <Routes>
-      <Route path='/'
-            element={<Home/>}
+      <Route path='/' 
+           element={<Home/>}
         />
          <Route path='/movie'
-            element={<Catalog/>}
+             element={authorizedUser.username.length?<Catalog /> : <SignInForm /> }
         />
         <Route path='/movie'>
         <Route path=':movieId'
-            element={<SelectedMovie/>}  
+            element={authorizedUser.username.length?<SelectedMovie/> : <SignInForm /> } 
           />  
         </Route>
         <Route path='sign-in' element={<SignInForm />}

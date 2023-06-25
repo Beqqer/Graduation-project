@@ -1,0 +1,51 @@
+@use '../../scss/' as *;
+
+.search {
+	flex-grow: 1;
+	display: flex;
+
+    &_input-item {
+        flex-grow: 1;
+        display: flex;
+    }
+    &__input-item[data-visible="false"] {
+        display: none;
+    }
+    &__input {
+        min-width: 5rem;
+        // flex-grow: 1;
+        background-color: transparent;
+        font-size: 15px;
+        outline: none;
+        border: none;
+        color: #fff;
+
+        @include mobile {
+            min-width: 5px;
+        }
+
+        &::placeholder {
+            color: #fff;
+            opacity: 0.5;
+        }
+        
+        &:focus::placeholder {
+            color: #fff;
+        }
+    }
+
+    &__show-button {
+        position: relative;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+}
+
+
+
+

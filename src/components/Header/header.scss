@@ -4,11 +4,17 @@
     font-size: 1.5rem;
 
     @include flex(center, unset);
+    background: linear-gradient(90deg, #ff0000cf, #fff);
+        background-size: 200% auto;
+        background-clip: text;  
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textflow 5s linear infinite;
 
-    &__subtitle {
-        color: #ff0000cf;
-    }
-
+        @keyframes textflow {
+            from {background-position: 50% center}         
+            to {background-position: 300% center}
+          }
 }
 
 .header {
@@ -44,10 +50,6 @@
             align-items: center;
 
         }
-        // @include flex(center,unset);
-        // &  * ~ *{
-        //     margin-left: 3rem;
-        // }
 
         li {
             font-weight: 500;
@@ -82,8 +84,6 @@
             padding: 0 2rem;
             box-shadow: $box-shadow;
 
-            // @include flex(center,space-between);
-
             & > * ~ *{
                 margin-left: 0;
             }
@@ -93,11 +93,8 @@
     &__auth {
         @include mobile {
             position: fixed;
-            bottom: 10px;
-            left: 50%;
-right: 50%;
+            top: 50px;
 
         }
     }
-    
 }

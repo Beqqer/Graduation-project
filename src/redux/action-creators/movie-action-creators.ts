@@ -17,6 +17,8 @@ import {
 	SET_SELECTED_MOVIE,
 	SET_TOTAL,
 	SET_CURRENT_PAGE,
+	SET_SEARCH,
+	SET_SEARCH_ACTIVE,
 } from "../action-types/movie-action-types";
 
 const setMovie = (movies: IMovieInfo[]) => ({
@@ -74,6 +76,16 @@ const setCurrentPage = (currentPage: number) => ({
 	currentPage,
 })
 
+const setSearch = (search: string) => ({
+    type: SET_SEARCH,
+    search,
+})
+
+const setSearchActive = (status:boolean) => ({
+    type: SET_SEARCH_ACTIVE,
+    searchActive:status
+});
+
 function* fetchMovies(action: any) {
 	const options = {
 		method: "GET",
@@ -84,12 +96,12 @@ function* fetchMovies(action: any) {
 		},
 	};
 
-	const { currentPage, genre, } = action.searchInfo;
-	// const genres = genre ? `&with_genres=${genre}` : ''
+	const { currentPage, genre, search } = action.searchInfo;
+	const genres = genre ? `&with_genres=${genre}` : ''
     const pages = currentPage ? `&page=${currentPage}` : ''
 
 	const resp: Response = yield fetch(
-		`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&${pages}&sort_by=popularity.desc`,
+		`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&${pages}${genres}&sort_by=popularity.desc`,
 		options
 	);
 	const data: IMovieResponse = yield resp.json();
@@ -138,8 +150,8 @@ function* fetchMovieActors(action: any) {
     const resp: Response = yield fetch(`https://api.themoviedb.org/3/movie/${key}/credits?language=en-US`, options)
     const data: IMovieResponse = yield resp.json();
     yield put(setMovieActors(data.cast));
-
 }
+
 
 function* watcherMovie() {
 	yield takeEvery(LOAD_MOVIE, fetchMovies);
@@ -159,4 +171,6 @@ export {
 	movieActors,
 	setMovieActors,
 	setCurrentPage,
+	setSearch,
+	setSearchActive,
 };

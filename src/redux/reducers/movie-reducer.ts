@@ -1,5 +1,5 @@
 import {  IMovieActors, IMovieInfo, IMovieTrailer } from "../../Types";
-import { SET_CURRENT_PAGE, SET_MOVIE, SET_MOVIE_ACTORS, SET_MOVIE_TRAILER, SET_SELECTED_MOVIE, SET_TOTAL } from "../action-types/movie-action-types";
+import { SET_CURRENT_PAGE, SET_MOVIE, SET_MOVIE_ACTORS, SET_MOVIE_TRAILER, SET_SEARCH, SET_SEARCH_ACTIVE, SET_SELECTED_MOVIE, SET_TOTAL } from "../action-types/movie-action-types";
 
 const initialState = {
     movies: [] as IMovieInfo[],
@@ -8,6 +8,8 @@ const initialState = {
     movieTrailer: [] as IMovieTrailer[],
     cast: [] as IMovieActors[],
     currentPage: 1,
+    search: '',
+    searchActive: false,
 }
 
 
@@ -59,7 +61,20 @@ const movieReducer = (state = initialState, action: any) => {
 				...state,
 				currentPage: currentPage,
 			};
-		}
+        }
+        case SET_SEARCH: {
+            const { search } = action;
+            return {
+                ...state,
+                search,
+            }
+        }
+        case SET_SEARCH_ACTIVE: {
+            return {
+                ...state,
+                searchActive: action.searchActive
+            }
+        }
         default: {
             return state
         }

@@ -19,9 +19,6 @@ const Home = () => {
     return (
         <div>
              <Slider /> 
-            {/* {data.map((el) => { 
-                return <MovieCards movieCard={el} />
-            })} */}
         </div>
     )
 }

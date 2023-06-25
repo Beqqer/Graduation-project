@@ -64,6 +64,7 @@ export interface ISignIn {
 
 export interface IUserState {
     user: IUserData,
+    authorizedUser: IUserData;
 }
 
 export interface IMovieInfo {
@@ -108,6 +109,8 @@ export interface IMoviesState {
     movieTrailer: IMovieTrailer[],
     cast: IMovieActors[],
     currentPage: number,
+    search: string,
+    searchActive: boolean,
 }
 
 export interface IMovieTrailer {
@@ -119,5 +122,10 @@ export interface IMovieActors {
     original_name: string,
     profile_path: string,
     key: string,
-    // cast:any[]
+}
+
+export interface IMovieResponse {
+	count: number,
+	next : number,
+	results: IMovieInfo[],
 }
