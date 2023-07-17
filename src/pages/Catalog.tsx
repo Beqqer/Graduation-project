@@ -30,7 +30,7 @@ const Catalog = () => {
          <Button className={"pagination__button"} content={"Prev"} isActive={currentPage === 1} callback={() => { dispatch(setCurrentPage(currentPage - 1)) }} />
          <div className="pagination__current-page">
                  <h2>
-                     {currentPage}
+                      {currentPage}
                 </h2>
          </div>
          <Button className={"pagination__button"} content={"Next"} isActive={pagesCount === currentPage} callback={()=> {dispatch(setCurrentPage(currentPage + 1))}}/>
